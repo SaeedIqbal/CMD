@@ -1,0 +1,16 @@
+dataset:
+  name: visa
+  root: /home/phd/datasets/VisA
+  categories:
+    - pcb
+    - capsules
+    - macaroni1
+    - macaroni2
+    - cashew
+    - fryum
+    - pipe_fryum
+  # VisA: 12 categories total; list all if needed
+  image_size: [512, 512]
+  transform:
+    normalize_mean: [0.485, 0.456, 0.406]
+    normalize_std: [0.229, 0.224, 0.225]

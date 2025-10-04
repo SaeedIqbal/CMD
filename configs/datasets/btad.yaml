@@ -1,0 +1,11 @@
+dataset:
+  name: btad
+  root: /home/phd/datasets/BTAD
+  categories:
+    - product_1
+    - product_2
+    - product_3
+  image_size: [512, 512]
+  transform:
+    normalize_mean: [0.485, 0.456, 0.406]
+    normalize_std: [0.229, 0.224, 0.225]

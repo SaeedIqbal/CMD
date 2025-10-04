@@ -1,0 +1,18 @@
+dataset:
+  name: dgad
+  root: /home/phd/datasets/DGAD
+  categories:
+    - class1
+    - class2
+    - class3
+    - class4
+    - class5
+    - class6
+    - class7
+    - class8
+    - class9
+    - class10
+  image_size: [512, 512]
+  transform:
+    normalize_mean: [0.485, 0.456, 0.406]
+    normalize_std: [0.229, 0.224, 0.225]

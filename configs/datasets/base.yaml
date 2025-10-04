@@ -1,0 +1,36 @@
+# Base configuration for CMD meta-pretraining
+model:
+  backbone: resnet101
+  pretrained: true
+  dc: 64          # Causal latent dimension
+  dn: 192         # Non-causal latent dimension
+  r_pca: 32       # PCA rank for normality manifold
+
+loss:
+  beta_kl: 0.5    # VAE KL weight
+  lambda_hsic: 1.2 # HSIC weight
+  mu_smooth: 0.05 # Smoothness regularization
+  gamma_ortho: 1.0 # Orthogonality weight
+
+training:
+  batch_size: 10
+  lr: 0.006
+  momentum: 0.9
+  weight_decay: 1e-4
+  iterations: 20000
+  device: cuda
+
+corruption:
+  task_types: ["surface", "structural", "contamination"]
+  surface:
+    alpha_s: 0.3
+    beta_s: 0.02
+    omega: 8
+    psi: 0.5
+  structural:
+    p_drop: 0.2
+    shift_range: 32
+  contamination:
+    n_blobs: 3
+    gamma_k: 0.4
+    mu_c: [0.8, 0.2, 0.2]  # Red spot prior

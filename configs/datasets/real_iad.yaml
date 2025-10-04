@@ -1,0 +1,16 @@
+dataset:
+  name: real_iad
+  root: /home/phd/datasets/Real-IAD
+  categories:
+    - AK  # pit
+    - BX  # deformation
+    - CH  # abrasion
+    - HS  # scratch
+    - PS  # damage
+    - QS  # missing parts
+    - YW  # foreign objects
+    - ZW  # contamination
+  image_size: [1024, 1024]  # High-res dataset
+  transform:
+    normalize_mean: [0.485, 0.456, 0.406]
+    normalize_std: [0.229, 0.224, 0.225]

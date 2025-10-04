@@ -1,0 +1,13 @@
+dataset:
+  name: mvtec_loco
+  root: /home/phd/datasets/MVTec-LOCO
+  categories:
+    - breakfast_box
+    - juice_bottle
+    - pushpins
+    - screw_bag
+    - splicing_connectors
+  image_size: [512, 512]
+  transform:
+    normalize_mean: [0.485, 0.456, 0.406]
+    normalize_std: [0.229, 0.224, 0.225]
