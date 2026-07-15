@@ -1,3 +1,4 @@
+
 # Causal Meta-Disentanglement (CMD) for Robust Few-Shot Object Detection
 
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
@@ -120,6 +121,38 @@ pip install perlin-noise  # For procedural corruption
 
 ---
 
+## 🔁 Reproducibility Protocol
+
+To ensure full reproducibility of all results reported in our manuscript, we provide complete details below. All experiments were conducted using the code in this repository.
+
+### Random Seeds & Sampling
+- **Support set sampling**: Fixed seed = 42  
+- **Corruption generation**: Fixed seed = 45  
+- **Training runs**: Five independent runs with seeds `{123, 456, 789, 999, 101}`  
+- Results report **mean ± standard deviation** over these five runs.
+
+### Hyperparameters
+All values were selected via Bayesian optimization on MVTec-AD and used unchanged across datasets:
+- HSIC weight (λ): **1.2**
+- Sparsity ratio (ρ): **0.5**
+- Normality threshold (κ): **3.0**
+- Base learning rate: **0.006**
+- Novel fine-tuning lr: **0.001**
+- Batch size: **10**
+
+See `configs/base.yaml` and `configs/novel.yaml` for full specifications.
+
+### Baseline Evaluation
+All baselines (TFA, Meta R-CNN, DeFRCN, FSCE, DLFG) were **re-implemented using official codebases** and evaluated under **identical conditions**: same backbone (ResNet-101), optimizer (SGD), resolution (512×512, 1024×1024 for Real-IAD), data splits, and random seeds.
+
+### Hardware
+- **GPUs**: 2 × NVIDIA A100 (40 GB memory each)
+- **Software**: Python 3.8, PyTorch 1.12, CUDA 11.8
+
+For full details, see the complete protocol at [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
+
+---
+
 ## 📥 Datasets
 
 We evaluate on **7 industrial anomaly detection benchmarks**:
@@ -212,7 +245,4 @@ This project is released under the [Apache 2.0 License](LICENSE).
 - This code builds upon [DLFG](https://ieeexplore.ieee.org/document/10558983) and [Meta R-CNN](https://openaccess.thecvf.com/content_ICCV_2019/html/Yan_Meta_R-CNN_Towards_General_Solver_for_Instance-Level_Low-Shot_Learning_ICCV_2019_paper.html).
 - Industrial datasets are provided by their respective authors—thank you for enabling reproducible research!
 
-
---- 
-
-This README is **ready for GitHub** and provides everything a user needs to **reproduce your results**, **extend your method**, or **apply CMD to new industrial datasets**.
+---
